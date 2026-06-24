@@ -5,4 +5,4 @@ for i in range(26):
         result += chr(122 - i)
     else:
         result += chr(122 - i - 32)
-print("{:s}".format(result))
+print("{:s}".format(result), end="")
