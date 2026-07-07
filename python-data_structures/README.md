@@ -1,0 +1,3 @@
+# Data structures
+
+In this directory i will be covering concepts of data structures in python including lists, sets, tuples, etc...
