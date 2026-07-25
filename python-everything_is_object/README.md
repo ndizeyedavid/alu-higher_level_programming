@@ -1,0 +1,3 @@
+# Everythin in python is an object
+
+Honestly this is one of the strangest assignments of intranet. Like what do you mean i have to create a text file and push it to GH, why can't I just write the answer in the textbox there....
