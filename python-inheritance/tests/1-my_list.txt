@@ -1,5 +1,7 @@
 Test cases for MyList class with print_sorted.
 
+>>> import sys
+>>> sys.path.insert(0, 'python-inheritance')
 >>> MyList = __import__('1-my_list').MyList
 >>> my_list = MyList()
 >>> my_list.append(1)
