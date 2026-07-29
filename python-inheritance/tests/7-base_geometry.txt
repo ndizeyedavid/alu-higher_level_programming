@@ -1,5 +1,7 @@
 Test cases for BaseGeometry class.
 
+>>> import sys
+>>> sys.path.insert(0, 'python-inheritance')
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 
@@ -9,11 +11,33 @@ Test integer_validator with valid inputs.
 >>> bg.integer_validator("width", 89)
 >>> bg.integer_validator("age", 1)
 
-Test integer_validator with non-integer.
+Test integer_validator with non-integer types.
 
 >>> bg.integer_validator("name", "John")
 Traceback (most recent call last):
 TypeError: name must be an integer
+
+>>> bg.integer_validator("age", (4,))
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", [3])
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", {3, 4})
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", None)
+Traceback (most recent call last):
+TypeError: age must be an integer
+
+Test integer_validator with bool (should raise TypeError).
+
+>>> bg.integer_validator("age", True)
+Traceback (most recent call last):
+TypeError: age must be an integer
 
 Test integer_validator with zero.
 
