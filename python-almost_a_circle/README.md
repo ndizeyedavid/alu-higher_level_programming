@@ -1,3 +1,2 @@
-# Almost completed the whole intranet assignments
-
-Just one thingy left and i will be done. Yayyy!!!
+Almost a circle - Python project covering Base, Rectangle, and Square classes
+with serialization/deserialization using JSON.
