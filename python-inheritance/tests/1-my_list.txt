@@ -1,4 +1,4 @@
-Test cases for MyList class.
+Test cases for MyList class with print_sorted.
 
 >>> MyList = __import__('1-my_list').MyList
 >>> my_list = MyList()
@@ -13,3 +13,20 @@ Test cases for MyList class.
 [1, 2, 3, 4, 5]
 >>> print(my_list)
 [1, 4, 2, 3, 5]
+
+Test print_sorted with negative numbers.
+
+>>> my_list = MyList()
+>>> my_list.append(-5)
+>>> my_list.append(3)
+>>> my_list.append(-2)
+>>> my_list.append(0)
+>>> my_list.append(-8)
+>>> my_list.print_sorted()
+[-8, -5, -2, 0, 3]
+
+Test print_sorted with empty list.
+
+>>> my_list = MyList()
+>>> my_list.print_sorted()
+[]
