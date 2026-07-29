@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod +x /home/mellow/alu-higher_level_programming/python-object_relational_mapping/*.py)",
+      "Bash(chmod +x //wsl.localhost/Ubuntu-24.04/home/mellow/alu-higher_level_programming/python-object_relational_mapping/*.py)",
+      "Bash(grep -E '\\\\.py$|README')"
+    ]
+  }
+}
