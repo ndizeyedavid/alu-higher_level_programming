@@ -1,3 +1,1 @@
-# Test Driven Development
-
-I know it's irrelevant here but i want to save it so i can mention it later. So most of the assignemt projects here have dead and changed links which differe from the ones mentioned in the instructions. This has cause me a burnout trying to figure out why what i did isn't working on intranet yet in my sandbox it works. I dont know if it is intentional, but what i do know is that it's strssfull
+Python test-driven development project covering doctests and unittests.
