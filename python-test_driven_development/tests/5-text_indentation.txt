@@ -1,0 +1,53 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Hello.")
+Hello.
+<BLANKLINE>
+>>> text_indentation("Hello?")
+Hello?
+<BLANKLINE>
+>>> text_indentation("Hello:")
+Hello:
+<BLANKLINE>
+>>> text_indentation("Hi. How are you? I'm fine: thanks")
+Hi.
+<BLANKLINE>
+How are you?
+<BLANKLINE>
+I'm fine:
+<BLANKLINE>
+thanks
+>>> text_indentation("")
+
+>>> text_indentation("  .  ")
+.
+<BLANKLINE>
+>>> text_indentation("No punctuation")
+No punctuation
+>>> text_indentation(123)
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation(None)
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation(True)
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation(["Hello"])
+Traceback (most recent call last):
+TypeError: text must be a string
+>>> text_indentation("Lore.ipsum?dolor:sit")
+Lore.
+<BLANKLINE>
+ipsum?
+<BLANKLINE>
+dolor:
+<BLANKLINE>
+sit
+>>> text_indentation(" . ? :")
+.
+<BLANKLINE>
+?
+<BLANKLINE>
+:
+<BLANKLINE>
