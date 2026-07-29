@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Unit tests for the Square class."""
 import unittest
+import os
 from models.square import Square
 from models.rectangle import Rectangle
 from models.base import Base
@@ -59,6 +60,34 @@ class TestSquareSizeValidation(unittest.TestCase):
         """Test negative size raises ValueError."""
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             Square(-1)
+
+
+class TestSquareXValidation(unittest.TestCase):
+    """Tests for x validation on Square."""
+
+    def test_x_string(self):
+        """Test x as string raises TypeError."""
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Square(1, "2")
+
+    def test_x_negative(self):
+        """Test negative x raises ValueError."""
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            Square(1, -2)
+
+
+class TestSquareYValidation(unittest.TestCase):
+    """Tests for y validation on Square."""
+
+    def test_y_string(self):
+        """Test y as string raises TypeError."""
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            Square(1, 2, "3")
+
+    def test_y_negative(self):
+        """Test negative y raises ValueError."""
+        with self.assertRaisesRegex(ValueError, "y must be >= 0"):
+            Square(1, 2, -3)
 
 
 class TestSquareStr(unittest.TestCase):
@@ -171,6 +200,78 @@ class TestSquareDisplay(unittest.TestCase):
         s.display()
         sys.stdout = sys.__stdout__
         self.assertEqual(captured.getvalue(), "##\n##\n")
+
+
+class TestSquareSaveToFile(unittest.TestCase):
+    """Tests for Square.save_to_file method."""
+
+    def setUp(self):
+        """Remove test file before each test."""
+        try:
+            os.remove("Square.json")
+        except FileNotFoundError:
+            pass
+
+    def tearDown(self):
+        """Clean up test file."""
+        try:
+            os.remove("Square.json")
+        except FileNotFoundError:
+            pass
+
+    def test_save_none(self):
+        """Test save_to_file(None) writes empty list."""
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            content = f.read()
+        self.assertEqual(content, "[]")
+
+    def test_save_empty(self):
+        """Test save_to_file([]) writes empty list."""
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            content = f.read()
+        self.assertEqual(content, "[]")
+
+    def test_save_one_square(self):
+        """Test save_to_file with one square."""
+        Square.save_to_file([Square(1)])
+        with open("Square.json", "r") as f:
+            content = f.read()
+        self.assertIn("size", content)
+
+
+class TestSquareLoadFromFile(unittest.TestCase):
+    """Tests for Square.load_from_file method."""
+
+    def setUp(self):
+        """Remove test file before each test."""
+        try:
+            os.remove("Square.json")
+        except FileNotFoundError:
+            pass
+
+    def tearDown(self):
+        """Clean up test file."""
+        try:
+            os.remove("Square.json")
+        except FileNotFoundError:
+            pass
+
+    def test_load_no_file(self):
+        """Test load_from_file returns [] when file doesn't exist."""
+        result = Square.load_from_file()
+        self.assertEqual(result, [])
+
+    def test_load_file_exists(self):
+        """Test load_from_file returns correct instances."""
+        s1 = Square(5)
+        s2 = Square(7, 9, 1)
+        Square.save_to_file([s1, s2])
+        result = Square.load_from_file()
+        self.assertEqual(len(result), 2)
+        self.assertEqual(str(result[0]), str(s1))
+        self.assertEqual(str(result[1]), str(s2))
 
 
 if __name__ == "__main__":
