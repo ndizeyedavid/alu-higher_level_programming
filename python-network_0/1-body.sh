@@ -1,3 +1,6 @@
 #!/bin/bash
 # Sends a GET request and displays the body of a 200 status code response
-curl -s -o /dev/null -w "%{http_code}" "$1" | grep -q 200 && curl -s "$1"\n
+code=$(curl -sL -o /tmp/body -w "%{http_code}" "$1")
+if [ "$code" -eq 200 ]; then
+    cat /tmp/body
+fi
