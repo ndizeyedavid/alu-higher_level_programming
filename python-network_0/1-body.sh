@@ -4,3 +4,4 @@ code=$(curl -sL -o /tmp/body -w "%{http_code}" "$1")
 if [ "$code" -eq 200 ]; then
     cat /tmp/body
 fi
+
