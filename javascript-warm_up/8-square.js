@@ -10,6 +10,6 @@ if (Number.isNaN(Number(argv[2]))) {
       side += 'X';
       count++;
     }
-      console.log(side);
+    console.log(side);
   }
 }
