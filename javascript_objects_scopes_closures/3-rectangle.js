@@ -11,11 +11,10 @@ class Rectangle {
     for (let i = 0; i < this.height; i++) {
       let result = '';
       for (let y = 0; y < this.width; y++) {
-	result += 'X';
+        result += 'X';
       }
       console.log(result);
     }
   }
 }
 module.exports = Rectangle;
-      
